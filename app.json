@@ -1,0 +1,18 @@
+{
+  "name": "Entrypoint Express",
+  "description": "Entrypoint made in nodejs and express",
+  "website": "http://litebyte.us",
+  "repository": "",
+  "success_url": "/",
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}

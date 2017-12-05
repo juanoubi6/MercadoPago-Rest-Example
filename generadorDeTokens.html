@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html>
+
+    <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
+	<head>
+         <script>
+             Mercadopago.setPublishableKey("TEST-2e911dfc-0550-4745-9e45-1abcd53c78f0");
+
+             function addEvent(el, eventName, handler) {
+                 if (el.addEventListener) {
+                     el.addEventListener(eventName, handler);
+                 } else {
+                     el.attachEvent('on' + eventName, function () {
+                         handler.call(el);
+                     });
+                 }
+             };
+
+             function getBin() {
+                 var ccNumber = document.querySelector('input[data-checkout="cardNumber"]');
+                 return ccNumber.value.replace(/[ .-]/g, '').slice(0, 6);
+             };
+
+             function guessingPaymentMethod(event) {
+                 Mercadopago.setPublishableKey("TEST-2e911dfc-0550-4745-9e45-1abcd53c78f0");
+                 var bin = getBin();
+
+                 if (event.type == "keyup") {
+                     if (bin.length >= 6) {
+                         Mercadopago.getPaymentMethod({
+                             "bin": bin
+                         }, setPaymentMethodInfo);
+                     }
+                 } else {
+                     setTimeout(function () {
+                         if (bin.length >= 6) {
+                             Mercadopago.getPaymentMethod({
+                                 "bin": bin
+                             }, setPaymentMethodInfo);
+                         }
+                     }, 100);
+                 }
+
+             };
+
+             function setPaymentMethodInfo(status, response) {
+                 if (status == 200) {
+                     // do somethings ex: show logo of the payment method
+                     var form = document.querySelector('#pay');
+
+                     if (document.querySelector("input[name=paymentMethodId]") == null) {
+                         var paymentMethod = document.createElement('input');
+                         paymentMethod.setAttribute('name', "paymentMethodId");
+                         paymentMethod.setAttribute('type', "hidden");
+                         paymentMethod.setAttribute('value', response[0].id);
+                         console.log(response[0].id);
+
+                         form.appendChild(paymentMethod);
+                     } else {
+                         document.querySelector("input[name=paymentMethodId]").value = response[0].id;
+                     }
+                 } else {
+                     console.log(response);
+                 }
+             };
+
+             function sdkResponseHandler(status, response) {
+                 if (status != 200 && status != 201) {
+                     console.log(response);
+                     alert("verify filled data");
+                 } else {
+                     var cardNumberTextBox = document.querySelector("input[id=cardNumber]");
+                     cardNumberTextBox.setAttribute('value', response.id);
+                     console.log(response.id);
+                 }
+             };
+
+
+             doSubmit = false;
+
+             function doPay(event) {
+                 event.preventDefault();
+                 if (!doSubmit) {
+                     var $form = document.querySelector('#pay');
+
+                     Mercadopago.setPublishableKey("TEST-2e911dfc-0550-4745-9e45-1abcd53c78f0");
+
+                     Mercadopago.createToken($form, sdkResponseHandler); // The function "sdkResponseHandler" is defined below
+
+                     return false;
+                 }
+             };
+
+
+        </script> 
+		<title>Pay</title>
+	</head>
+	<body>
+        <form action="" method="post" id="pay" name="pay" >
+    <fieldset>
+        <ul>
+            <li>
+                <label for="email">Email</label>
+                <input id="email" name="email" value="juan.manuel.oubina@gmail.com" type="email"/>
+            </li>
+            <li>
+                <label for="cardNumber">Credit card number:</label>
+                <input type="text" id="cardNumber"  data-checkout="cardNumber" value="5031 7557 3453 0604" onkeyup="guessingPaymentMethod(event)" />
+            </li>
+            <li>
+                <label for="securityCode">Security code:</label>
+                <input type="text" id="securityCode" value="123" data-checkout="securityCode" />
+            </li>
+            <li>
+                <label for="cardExpirationMonth">Expiration month:</label>
+                <input type="text" id="cardExpirationMonth" value="12" data-checkout="cardExpirationMonth" />
+            </li>
+            <li>
+                <label for="cardExpirationYear">Expiration year:</label>
+                <input type="text" id="cardExpirationYear" value="2017" data-checkout="cardExpirationYear" />
+            </li>
+            <li>
+                <label for="cardholderName">Card holder name:</label>
+                <input type="text" id="cardholderName" value="APRO" data-checkout="cardholderName"/>
+            </li>
+            <li>
+                <label for="docType">Document type:</label>
+                <input id="docType" data-checkout="docType" value="DNI"></input>
+            </li>
+            <li>
+                <label for="docNumber">Document number:</label>
+                <input type="text" id="docNumber" value="39172020" data-checkout="docNumber"/>
+            </li>
+        </ul>
+        <input type="submit" value="Pay!" onclick="doPay(event)"/>
+    </fieldset>
+</form>
+	</body>
+</html>

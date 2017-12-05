@@ -1,0 +1,37 @@
+{
+  "name": "entrypoint-express",
+  "version": "1.0.0",
+  "description": "Entrypoint made in nodejs and express",
+  "main": "server.js",
+  "private": true,
+  "engines": {
+    "node": "8.9.1",
+    "npm": "5.5.1"
+  },
+  "scripts": {
+    "start": "node --optimize_for_size --max_old_space_size=460 server.js",
+    "test": "mocha",
+    "deploy:local": "sh scripts/deployLocal.sh",
+    "deploy:dev": "sh scripts/deployDev.sh",
+    "deploy:staging": "sh scripts/deployStaging.sh",
+    "deploy:prod": "sh scripts/deployProd.sh"
+  },
+  "dependencies": {
+    "body-parser": "~1.15.1",
+    "esdoc": "^0.4.8",
+    "express": "~4.14.0",
+    "express-cluster": "0.0.4",
+    "express-rate-limit": "^2.5.0",
+    "helmet": "^3.1.0",
+    "jsonwebtoken": "^7.0.0",
+    "mercadopago": "^0.5.0",
+    "moment": "^2.15.1",
+    "multer": "^1.1.0",
+    "validator": "^6.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "supertest": "^1.2.0",
+    "supertest-as-promised": "^4.0.0"
+  }
+}

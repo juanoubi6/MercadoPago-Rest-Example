@@ -1,0 +1,6 @@
+{
+  "source": "./app",
+  "destination": "./public/esdoc",
+  "unexportIdentifier": true,
+  "undocumentIdentifier": false
+}

@@ -1,0 +1,596 @@
+{
+	"info": {
+		"name": "MercadoPago",
+		"_postman_id": "fef53095-a6ee-384b-9ac8-0dc960415acd",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Customer",
+			"description": "",
+			"item": [
+				{
+					"name": "Create customer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"juan.manuel.oubina@litebyte.us\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"customers"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Search customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3000/searchCustomer?email=juan.manuel.oubina@gmail.com&first_name=elhard",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"searchCustomer"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "juan.manuel.oubina@gmail.com",
+									"equals": true
+								},
+								{
+									"key": "first_name",
+									"value": "elhard",
+									"equals": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get customer by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3000/customers/134573981-vMGNoV1zyS9Kj1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"customers",
+								"134573981-vMGNoV1zyS9Kj1"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add credit card to customer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"cardToken\":\"274c6495a9a3540bd3cb56e9f750917a\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/customers/134573981-vMGNoV1zyS9Kj1/cards",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"customers",
+								"134573981-vMGNoV1zyS9Kj1",
+								"cards"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete customer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3000/customers/134573981-vMGNoV1zyS9Kj1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"customers",
+								"134573981-vMGNoV1zyS9Kj1"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete credit card from customer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3000/customers/134573981-vMGNoV1zyS9Kj1/cards/1512134716577",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"customers",
+								"134573981-vMGNoV1zyS9Kj1",
+								"cards",
+								"1512134716577"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update customer",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"first_name\":\"juanchi\",\n\t\"last_name\":\"jejox\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/customers/134573981-vMGNoV1zyS9Kj1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"customers",
+								"134573981-vMGNoV1zyS9Kj1"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Autorizacion",
+			"description": "",
+			"item": [
+				{
+					"name": "Obtener access token del usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"temporalToken\":\"TG-5a2561c7e4b00fb5b67dc4ae-134573981\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/authorization",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"authorization"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pagos",
+			"description": "",
+			"item": [
+				{
+					"name": "Pago de un usuario X hacia el dueño de la app",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"payer\": {\r\n    \t\"customerID\":\"134573981-vMGNoV1zyS9Kj1\"\r\n    \t},\r\n    \"transaction_amount\": 100,\r\n    \"token\": \"6fa183085b2a72cbe2d8056230d95b0f\",\r\n    \"description\": \"Pago de 100pe de prueba\",\r\n    \"payment_method_id\": \"master\",\r\n    \"installments\": 1\r\n }"
+						},
+						"url": {
+							"raw": "http://localhost:3000/payment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"payment"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Pago de un usuario X a otro usuario Y",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"payer\": {\r\n    \t\"customerID\":\"287501630-pWJVLyPxOfoy2S\"\r\n    \t},\r\n    \"transaction_amount\": 200,\r\n    \"token\": \"cc453f4c8ec0b1f6a47523ffce2adff0\",\r\n    \"description\": \"Pago de una cuenta test a otra de gmail propia\",\r\n    \"payment_method_id\": \"master\",\r\n    \"installments\": 1,\r\n    \"receiverAccessToken\":\"TEST-2729930499639635-120410-138682e1e2cbc23399ce671cb2de97e7__LC_LB__-134573981\"\r\n }"
+						},
+						"url": {
+							"raw": "http://localhost:3000/usersPayment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"usersPayment"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Refund (total o parcial)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "refundAmount",
+									"value": "0",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "userAccessToken",
+									"value": "TEST-2729930499639635-120410-138682e1e2cbc23399ce671cb2de97e7__LC_LB__-134573981",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/payment/8840046/refunds",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"payment",
+								"8840046",
+								"refunds"
+							]
+						},
+						"description": "-Si refundAmount es distinto de 0, esa cantidad sera la que se refundee\n-Para pagos de un usuario X hacia un usuario Y, se debe informar el userAccessToken del usuario X (ya que es él quien realiza la transaccion y quien puede refundearla)\n-Para pagos de un usuario X hacia la aplicacion, no informarlo"
+					},
+					"response": []
+				},
+				{
+					"name": "Get payment by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3000/payment/8840156",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"payment",
+								"8840156"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reservas de fondos",
+			"description": "",
+			"item": [
+				{
+					"name": "Crear captura de fondos",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"payer\": {\r\n    \t\"customerID\":\"134573981-vMGNoV1zyS9Kj1\"\r\n    \t},\r\n    \"transaction_amount\": 100,\r\n    \"token\": \"76c259816a2ba0473c8af8057002892d\",\r\n    \"description\": \"Captura de 100 pesos\",\r\n    \"payment_method_id\": \"master\",\r\n    \"installments\": 1\r\n }"
+						},
+						"url": {
+							"raw": "http://localhost:3000/capture",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"capture"
+							]
+						},
+						"description": "Tener en cuenta que solo se tienen 7 dias para aceptar reclamar los fondos congelados"
+					},
+					"response": []
+				},
+				{
+					"name": "Reclamar captura de fondos",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "captureAmount",
+									"value": "50",
+									"description": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/capture/8840336/approve",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"capture",
+								"8840336",
+								"approve"
+							]
+						},
+						"description": "Se puede capturar un monto menor al reservado si se envia el parametro captureAmount (asegurarse que sea menor a lo reservado)"
+					},
+					"response": []
+				},
+				{
+					"name": "Cancelar captura de fondos",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:3000/capture/8840350/cancel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"capture",
+								"8840350",
+								"cancel"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Planes y subscripciones",
+			"description": "",
+			"item": [
+				{
+					"name": "Create plan",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "description",
+									"value": "Plan mensual de pago",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "planAmount",
+									"value": "60.50",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/plan",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"plan"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create subscription",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "plan_id",
+									"value": "ffdcf66fc9b14930b9f3e937349774de",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "customer_id",
+									"value": "134573981-vMGNoV1zyS9Kj1",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/subscription",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"subscription"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update plan",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "planAmount",
+									"value": "100",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/plan/ffdcf66fc9b14930b9f3e937349774de",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"plan",
+								"ffdcf66fc9b14930b9f3e937349774de"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
