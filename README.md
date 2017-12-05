@@ -23,5 +23,9 @@
 1. Para generar un nuevo token, recargar la pagina (F5)
 
 # Links utiles
-https://www.mercadopago.com.ar/developers/es/solutions/payments/custom-checkout/mercadopago-connect#get-paid-connect
-https://www.mercadopago.com.ar/developers/en/solutions/payments/custom-checkout/plans-and-subscriptions/
+1. https://www.mercadopago.com.ar/developers/es/solutions/payments/custom-checkout/mercadopago-connect#get-paid-connect
+1. https://www.mercadopago.com.ar/developers/en/solutions/payments/custom-checkout/plans-and-subscriptions/
+
+# Aclaración
+
+Se cuenta con el archivo MercadoPago.postman_collection.json para testear los endpoints.
