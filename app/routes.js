@@ -12,7 +12,8 @@ let Subscriptions = require("./controllers/subscription");
 module.exports = function routes(app) {
 
   //Authorization endpoints
-  app.post('/authorization',Authorization.getUserAccessToken)
+  app.post('/authorization',Authorization.getUserAccessToken);
+  app.post('/refreshToken',Authorization.renewAccessToken);
 
   //Payment endpoints
   app.get('/payment/:id',Payments.getPaymentById);

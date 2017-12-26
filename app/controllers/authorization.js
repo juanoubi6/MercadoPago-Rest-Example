@@ -5,7 +5,8 @@ const MP = require("mercadopago");
 const mp = new MP(config.MP_ACCESS_TOKEN); //Key del dueño de la aplicacion
 
 let AuthorizationController = {
-  getUserAccessToken
+  getUserAccessToken,
+  renewAccessToken
 };
 
 //A este endpoint se lo llama con el codigo resultane de llamar a
@@ -41,5 +42,32 @@ function getUserAccessToken(req, res) {
 
 }
 
+function renewAccessToken(req,res){
+
+  const body = req.body;
+
+  const data = {
+    "client_secret": config.MP_ACCESS_TOKEN,
+    "grant_type": "refresh_token",
+    "refresh_token": body.refreshToken            //Token de refresh
+  };
+
+  mp.post({
+    uri: "/oauth/token",
+    data: data,
+    headers:{
+      "content-type":"application/x-www-form-urlencoded"
+    },
+    authenticate: false
+  })
+    .then(userCredentials => {
+      //De la respuesta, se debe almacenar el ACCESS_TOKEN en el registro asociado al usuario en la BD. Ese token se usara para realizar pagos HACIA el usuario.
+      res.dispatch(Status.OK, "", userCredentials.response);
+    })
+  .catch(err => {
+    res.dispatch(err.status,err.message,"" );
+  });
+
+}
 
 module.exports = AuthorizationController;
