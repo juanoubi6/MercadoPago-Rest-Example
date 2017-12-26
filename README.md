@@ -1,3 +1,10 @@
+# Endpoints disponibles
+
+1. ABM Customers. Agregarles y borrarles tarjetas de credito. Buscar customers por varios parametros
+1. Pagos a la aplicacion, pagos entre usuarios, busqueda de pagos por ID, refund (total o parcial) de pagos
+1. Crear "capturas" (pagos que congelan X cantidad de plata de la tarjeta del cliente hasta que los reclamemos o cancelemos). Cancelacion y reclamacion de capturas
+1. Creacion de planes de pago (para cobrarle al cliente mensualmente una X cantidad) y subscripciones de customers a planes existentes.
+
 # Como crear customers y agregarles tarjetas (toda la seccion customers)
 
 1. Crear una aplicacion en mercadopago
@@ -13,7 +20,7 @@
 
 1. Se debe obtener el access token del usuario al que debe llegarle la plata.
 1. Para obtener el access token, hacer que el usuario ingrese a https://auth.mercadopago.com.ar/authorization?client_id=APP_ID&response_type=code&platform_id=mp&redirect_uri=URL_RETORNO (reemplazando el APP_ID y el URL_RETORNO por los de nuestra aplicacion)
-1. Cuando el usuario autorize, se mostrata el parametro CODE en la url de retorno. Ese codigo es un codigo temporal que usar√° el backend para obtener el access token final del usuario.
+1. Cuando el usuario autorize, se mostrata el parametro CODE en la url de retorno. Ese codigo es un codigo temporal que usar· el backend para obtener el access token final del usuario.
 1. Utilizar ese codigo como parametro en el endpoint de autenticacion. Se obtendra el access token (anotarlo o guardarlo en una BD)
 1. Cuando querramos que un pago le llegue a ese usuario, poner el access token en la variable de "receiverAccessToken" (del endpoint /usersPayment)
 
@@ -26,6 +33,6 @@
 1. https://www.mercadopago.com.ar/developers/es/solutions/payments/custom-checkout/mercadopago-connect#get-paid-connect
 1. https://www.mercadopago.com.ar/developers/en/solutions/payments/custom-checkout/plans-and-subscriptions/
 
-# Aclaraci√≥n
+# AclaraciÛn
 
 Se cuenta con el archivo MercadoPago.postman_collection.json para testear los endpoints.
