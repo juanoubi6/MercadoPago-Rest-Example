@@ -1,7 +1,7 @@
 {
   "name": "Entrypoint Express",
   "description": "Entrypoint made in nodejs and express",
-  "website": "http://litebyte.us",
+  "website": "",
   "repository": "",
   "success_url": "/",
   "formation": {
