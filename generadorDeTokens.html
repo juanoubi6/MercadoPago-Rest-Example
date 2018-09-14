@@ -5,7 +5,7 @@
     <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
 	<head>
          <script>
-             Mercadopago.setPublishableKey("TEST-2e911dfc-0550-4745-9e45-1abcd53c78f0");
+             Mercadopago.setPublishableKey("MERCADOPAGO-PUBLIC-KEY-TEST");
 
              function addEvent(el, eventName, handler) {
                  if (el.addEventListener) {
@@ -23,7 +23,7 @@
              };
 
              function guessingPaymentMethod(event) {
-                 Mercadopago.setPublishableKey("TEST-2e911dfc-0550-4745-9e45-1abcd53c78f0");
+                 Mercadopago.setPublishableKey("MERCADOPAGO-PUBLIC-KEY-TEST");
                  var bin = getBin();
 
                  if (event.type == "keyup") {
@@ -73,6 +73,7 @@
                      var cardNumberTextBox = document.querySelector("input[id=cardNumber]");
                      cardNumberTextBox.setAttribute('value', response.id);
                      console.log(response.id);
+					 console.log(response);
                  }
              };
 
@@ -84,7 +85,7 @@
                  if (!doSubmit) {
                      var $form = document.querySelector('#pay');
 
-                     Mercadopago.setPublishableKey("TEST-2e911dfc-0550-4745-9e45-1abcd53c78f0");
+                     Mercadopago.setPublishableKey("MERCADOPAGO-PUBLIC-KEY-TEST");
 
                      Mercadopago.createToken($form, sdkResponseHandler); // The function "sdkResponseHandler" is defined below
 
@@ -118,7 +119,7 @@
             </li>
             <li>
                 <label for="cardExpirationYear">Expiration year:</label>
-                <input type="text" id="cardExpirationYear" value="2017" data-checkout="cardExpirationYear" />
+                <input type="text" id="cardExpirationYear" value="2018" data-checkout="cardExpirationYear" />
             </li>
             <li>
                 <label for="cardholderName">Card holder name:</label>
