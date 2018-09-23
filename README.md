@@ -21,7 +21,7 @@
 
 1. Se debe obtener el access token del usuario al que debe llegarle la plata.
 1. Para obtener el access token, hacer que el usuario ingrese a https://auth.mercadopago.com.ar/authorization?client_id=APP_ID&response_type=code&platform_id=mp&redirect_uri=URL_RETORNO (reemplazando el APP_ID y el URL_RETORNO por los de nuestra aplicacion)
-1. Cuando el usuario autorize, se mostrata el parametro CODE en la url de retorno. Ese codigo es un codigo temporal que usará el backend para obtener el access token final del usuario.
+1. Cuando el usuario autorize, se mostrará el parametro CODE en la url de retorno. Ese codigo es un codigo temporal que usará el backend para obtener el access token final del usuario.
 1. Utilizar ese codigo como parametro en el endpoint de autenticacion. Se obtendra el access token (anotarlo o guardarlo en una BD)
 1. Cuando querramos que un pago le llegue a ese usuario, poner el access token en la variable de "receiverAccessToken" (del endpoint /usersPayment)
 
